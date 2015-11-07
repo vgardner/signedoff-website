@@ -19036,7 +19036,7 @@ var ReleaseList = React.createClass({displayName: "ReleaseList",
 
 var ReleaseTitle = React.createClass({displayName: "ReleaseTitle",
   render: function(){
-    return React.createElement("li", {key: this.props.title}, this.props.title)
+    return React.createElement("li", {key: this.props.title}, this.props.title);
   }
 });
 
@@ -19046,11 +19046,22 @@ var CommitList = React.createClass({displayName: "CommitList",
       React.createElement("ul", null, 
       
         this.props.items.map(function(item) {
-          return React.createElement("li", {key: item.Message}, item.Message)
+          return (
+            React.createElement("ul", null, 
+              React.createElement("li", {key: item.Sha}, item.Message), 
+              React.createElement(SignedInput, {sha: item.Sha})
+            )
+          );
         })
        
       )
     )
+  }
+});
+
+var SignedInput = React.createClass({displayName: "SignedInput",
+  render: function(){
+    return React.createElement("input", {type: "checkbox", key: this.props.sha})
   }
 });
 

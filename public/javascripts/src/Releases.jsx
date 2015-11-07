@@ -59,7 +59,7 @@ var ReleaseList = React.createClass({
 
 var ReleaseTitle = React.createClass({
   render: function(){
-    return <li key={this.props.title}>{this.props.title}</li>
+    return <li key={this.props.title}>{this.props.title}</li>;
   }
 });
 
@@ -69,11 +69,22 @@ var CommitList = React.createClass({
       <ul>
       {
         this.props.items.map(function(item) {
-          return <li key={item.Message}>{item.Message}</li>
+          return (
+            <ul>
+              <li key={item.Sha}>{item.Message}</li>
+              <SignedInput sha={item.Sha} />
+            </ul>
+          );
         })
        }
       </ul>
     )
+  }
+});
+
+var SignedInput = React.createClass({
+  render: function(){
+    return <input type="checkbox" key={this.props.sha} />
   }
 });
 
