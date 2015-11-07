@@ -19007,13 +19007,27 @@ module.exports = React.createClass({displayName: "exports",
   render: function(){
     return (
       React.createElement("div", {className: "filter-list"}, 
-      React.createElement(List, {items: this.props.items})
+      React.createElement(ReleaseList, {items: this.props.items})
       )
     );
   }
 });
 
-var List = React.createClass({displayName: "List",
+var ReleaseList = React.createClass({displayName: "ReleaseList",
+  render: function(){
+    return (
+      React.createElement("ul", null, 
+      
+        this.props.items.map(function(item) {
+          return React.createElement("li", {key: item}, item)
+        })
+       
+      )
+    )
+  }
+});
+
+var CommitList = React.createClass({displayName: "CommitList",
   render: function(){
     return (
       React.createElement("ul", null, 
@@ -19029,7 +19043,7 @@ var List = React.createClass({displayName: "List",
 
 },{"react":156}],158:[function(require,module,exports){
 var React = require('react');
-var HelloWorld = require('./Releases.jsx');
+var Releases = require('./Releases.jsx');
 
 // Snag the initial state that was passed from the server side
 var initialState = JSON.parse(document.getElementById('initial-state').innerHTML)
@@ -19041,7 +19055,7 @@ for (release in initialState) {
 }
 
 React.render(
-    React.createElement(HelloWorld, {items: releases}),
+    React.createElement(Releases, {items: releases}),
     document.getElementById('releases')
 );
 

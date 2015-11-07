@@ -30,13 +30,13 @@ module.exports = React.createClass({
   render: function(){
     return (
       <div className="filter-list">
-      <List items={this.props.items}/>
+      <ReleaseList items={this.props.items}/>
       </div>
     );
   }
 });
 
-var List = React.createClass({
+var ReleaseList = React.createClass({
   render: function(){
     return (
       <ul>
@@ -50,4 +50,17 @@ var List = React.createClass({
   }
 });
 
+var CommitList = React.createClass({
+  render: function(){
+    return (
+      <ul>
+      {
+        this.props.items.map(function(item) {
+          return <li key={item}>{item}</li>
+        })
+       }
+      </ul>
+    )
+  }
+});
 
