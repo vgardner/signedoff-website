@@ -11,6 +11,6 @@ for (release in initialState) {
 }
 
 React.render(
-    <Releases items={releases} />,
+    <Releases items={initialState} />,
     document.getElementById('releases')
 );

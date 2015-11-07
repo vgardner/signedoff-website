@@ -40,13 +40,26 @@ var ReleaseList = React.createClass({
   render: function(){
     return (
       <ul>
-      {
+        {
         this.props.items.map(function(item) {
-          return <li key={item}>{item}</li>
+          return (
+            <li>
+              <ul>
+                <ReleaseTitle title={item.ReleaseId} />
+                <CommitList items={item.Commits}/>
+              </ul>
+            </li>
+          );
         })
        }
       </ul>
     )
+  }
+});
+
+var ReleaseTitle = React.createClass({
+  render: function(){
+    return <li key={this.props.title}>{this.props.title}</li>
   }
 });
 
@@ -56,7 +69,7 @@ var CommitList = React.createClass({
       <ul>
       {
         this.props.items.map(function(item) {
-          return <li key={item}>{item}</li>
+          return <li key={item.Message}>{item.Message}</li>
         })
        }
       </ul>

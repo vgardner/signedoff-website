@@ -19017,13 +19017,26 @@ var ReleaseList = React.createClass({displayName: "ReleaseList",
   render: function(){
     return (
       React.createElement("ul", null, 
-      
+        
         this.props.items.map(function(item) {
-          return React.createElement("li", {key: item}, item)
+          return (
+            React.createElement("li", null, 
+              React.createElement("ul", null, 
+                React.createElement(ReleaseTitle, {title: item.ReleaseId}), 
+                React.createElement(CommitList, {items: item.Commits})
+              )
+            )
+          );
         })
        
       )
     )
+  }
+});
+
+var ReleaseTitle = React.createClass({displayName: "ReleaseTitle",
+  render: function(){
+    return React.createElement("li", {key: this.props.title}, this.props.title)
   }
 });
 
@@ -19033,7 +19046,7 @@ var CommitList = React.createClass({displayName: "CommitList",
       React.createElement("ul", null, 
       
         this.props.items.map(function(item) {
-          return React.createElement("li", {key: item}, item)
+          return React.createElement("li", {key: item.Message}, item.Message)
         })
        
       )
@@ -19055,7 +19068,7 @@ for (release in initialState) {
 }
 
 React.render(
-    React.createElement(Releases, {items: releases}),
+    React.createElement(Releases, {items: initialState}),
     document.getElementById('releases')
 );
 
