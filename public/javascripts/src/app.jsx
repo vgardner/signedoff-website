@@ -14,3 +14,4 @@ React.render(
     <Releases items={initialState} />,
     document.getElementById('releases')
 );
+ 

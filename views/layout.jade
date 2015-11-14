@@ -1,8 +1,10 @@
 doctype html
-html
+html(lang="en")
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Dosis:400,300,200,700')
   body
+    include topbar
     block content
     script(src='/javascripts/build/app.js')

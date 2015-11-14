@@ -17,5 +17,3 @@ gulp.task('watch', function() {
 })
 
 gulp.task('default', ['js', 'watch']);
-
-gulp.task('default', ['js']);
