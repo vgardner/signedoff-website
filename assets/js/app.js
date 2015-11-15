@@ -1,5 +1,5 @@
 var React = require('react');
-var Releases = require('./Releases.jsx');
+var Releases = require('./Releases.js');
 
 // Snag the initial state that was passed from the server side
 var initialState = JSON.parse(document.getElementById('initial-state').innerHTML)

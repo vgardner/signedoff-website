@@ -5,6 +5,7 @@ __MACOSX
 .settings
 .classpath
 .sass-cache/
+.module-cache
 
 # OS generated files #
 ######################
@@ -35,3 +36,5 @@ Thumbs.db
 ############
 node_modules/
 bower_components/
+public/
+bin/
