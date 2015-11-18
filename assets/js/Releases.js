@@ -41,11 +41,11 @@ var ReleaseList = React.createClass({
     return (
       <ul>
         {
-        this.props.items.map(function(item) {
+        this.props.items.map(function(item, i) {
           return (
-            <li>
+            <li key={i}>
               <ul>
-                <ReleaseTitle title={item.ReleaseId} />
+                <ReleaseTitle title={item.ReleaseId}/>
                 <CommitList items={item.Commits}/>
               </ul>
             </li>
@@ -68,9 +68,9 @@ var CommitList = React.createClass({
     return (
       <ul>
       {
-        this.props.items.map(function(item) {
+        this.props.items.map(function(item, i) {
           return (
-            <ul>
+            <ul key={i}>
               <li key={item.Sha}>{item.Message}</li>
               <SignedInput sha={item.Sha} />
             </ul>
