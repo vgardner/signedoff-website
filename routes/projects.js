@@ -4,8 +4,8 @@ var request = require("request");
 
 /* GET projects listing. */
 router.get('/', function(req, res, next) {
-  res.render('projects', { 
-  	title: 'xxxx'
+  res.render('projects', {
+  	title: 'Projets'
   });
 });
 

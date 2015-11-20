@@ -1,5 +1,23 @@
 // -----------------------------------------
 // Base Imports
 // -----------------------------------------
-@import "normalize";
+@import "bootstrap/bootstrap";
+
 @import "base";
+@import "layout";
+@import "modules";
+@import "layout";
+
+@import "shame";
+
+.test {
+    @extend %container;
+}
+
+.test2 {
+    @extend %col-sm-3;
+}
+
+.test3 {
+    @extend %col-sm-4;
+}
