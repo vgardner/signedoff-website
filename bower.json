@@ -1,0 +1,23 @@
+{
+  "name": "signedoff",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Paulo Munoz <pvanet@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/vgardner/signedoff-website",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sassy-maps": "<1.0.0",
+    "susy": "~2.2.6"
+  }
+}

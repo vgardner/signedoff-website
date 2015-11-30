@@ -1,0 +1,123 @@
+// -----------------------------------------
+// Mixins
+// -----------------------------------------
+
+@mixin calc-grid-column($index, $class, $type) {
+  @if ($type == init) and ($index > 0) {
+    %col-#{$class}-#{$index} {
+      @extend %column;
+      width: percentage(($index / $grid-columns));
+    }
+  }
+  @if ($type == push) and ($index > 0) {
+    %col-#{$class}-push-#{$index} {
+      left: percentage(($index / $grid-columns));
+    }
+  }
+  @if ($type == push) and ($index == 0) {
+    %col-#{$class}-push-0 {
+      left: auto;
+    }
+  }
+  @if ($type == pull) and ($index > 0) {
+    %col-#{$class}-pull-#{$index} {
+      right: percentage(($index / $grid-columns));
+    }
+  }
+  @if ($type == pull) and ($index == 0) {
+    %col-#{$class}-pull-0 {
+      right: auto;
+    }
+  }
+  @if ($type == offset) {
+    %col-#{$class}-offset-#{$index} {
+      margin-left: percentage(($index / $grid-columns));
+    }
+  }
+}
+
+// [converter] This is defined recursively in LESS, but Sass supports real loops
+@mixin loop-grid-columns($columns, $class, $type) {
+  @for $i from 0 through $columns {
+    @include calc-grid-column($i, $class, $type);
+  }
+}
+
+
+// Create grid for specific class
+@mixin make-grid($class) {
+  @include loop-grid-columns($grid-columns, $class, init);
+  @include loop-grid-columns($grid-columns, $class, pull);
+  @include loop-grid-columns($grid-columns, $class, push);
+  @include loop-grid-columns($grid-columns, $class, offset);
+}
+
+
+
+
+
+
+// -----------------------------------------
+// Bootstrap Grid
+// -----------------------------------------
+$susy-columns: 12;
+$susy-gutter-width: 15px;
+$susy: (
+  columns: $susy-columns,
+  gutter-position: inside-static, //fixed width gutters like bootstrap
+  //it seems we *have* to set the column width in order to get static gutters
+  // but it is not taken into account when using the span mixin. Must miss something...
+  column-width: 120px,
+  gutter: $susy-gutter-width/120px
+);
+
+
+%container-fluid {
+  @include clearfix;
+  margin-left: auto;
+  margin-right: auto;
+  @include gutter($susy-gutter-width*2);
+}
+
+%container {
+  @extend %container-fluid;
+
+  @media (min-width: $screen-sm-min) {
+    width: $container-sm;
+  }
+  @media (min-width: $screen-md-min) {
+    width: $container-md;
+  }
+  @media (min-width: $screen-lg-min) {
+    width: $container-lg;
+  }
+}
+
+
+%row {
+  @include squish(-$susy-gutter-width);
+  @include clearfix;
+}
+
+
+%column {
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding-left: $susy-gutter-width;
+  padding-right: $susy-gutter-width;
+}
+
+
+@include make-grid(xs);
+
+@media (min-width: $screen-sm-min) {
+  @include make-grid(sm);
+}
+@media (min-width: $screen-md-min) {
+  @include make-grid(md);
+}
+@media (min-width: $screen-lg-min) {
+  @include make-grid(lg);
+}
+

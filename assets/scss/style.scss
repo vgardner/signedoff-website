@@ -1,7 +1,26 @@
 // -----------------------------------------
-// Base Imports
+// Bootstrap Imports
 // -----------------------------------------
-@import "bootstrap/bootstrap";
+// Core variables and mixins
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+// Reset and dependencies
+@import "bootstrap/normalize";
+
+// Core CSS
+@import "bootstrap/scaffolding";
+@import "bootstrap/type";
+
+// Utility classes
+@import "bootstrap/utilities";
+@import "bootstrap/responsive-utilities";
+
+// -----------------------------------------
+// Project Imports
+// -----------------------------------------
+@import "../../bower/susy/sass/susy";
+
 
 @import "base";
 @import "layout";
@@ -9,15 +28,3 @@
 @import "layout";
 
 @import "shame";
-
-.test {
-    @extend %container;
-}
-
-.test2 {
-    @extend %col-sm-3;
-}
-
-.test3 {
-    @extend %col-sm-4;
-}
